@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
-const cors = require('cors'); 
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const DBConnection = require('./config/DBconnection');
 const { notFound, defaultErrorHandler } = require('./Middlewear/ErrorHandler/errorHandler');
@@ -24,7 +24,8 @@ app.get("/", (req, res) => {
     res.send("hello");
 });
 
-
+// Routes
+app.use('/api/v1/user', require('./Routes/UserRoutes/userRoutes'));
 
 // Error handling middlewares
 app.use(notFound);

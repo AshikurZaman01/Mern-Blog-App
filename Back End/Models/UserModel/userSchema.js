@@ -39,6 +39,12 @@ const userSchema = new mongoose.Schema({
         url: String // This is the url of the image stored in cloudinary
     },
 
+    niches: {
+        firstNich: String,
+        secondNich: String,
+        thirdNich: String
+    },
+
     coveLetter: {
         type: String,
     },
