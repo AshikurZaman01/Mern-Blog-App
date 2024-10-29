@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const UserModel = require('../../Models/UserModel/userSchema');
-const cloudinary = require('cloudinary').v2;
+const sendToken = require('../../Utils/sendToken');
 
 const registerUser = async (req, res) => {
     try {
@@ -47,8 +47,9 @@ const registerUser = async (req, res) => {
         // Save the user to the database
         await newUser.save();
 
-        // Send successful response
-        res.status(201).json({ success: true, message: "User registered successfully", data: newUser });
+        // Send token and response
+        sendToken(newUser, res, 201, "User registered successfully");
+
     } catch (error) {
         res.status(500).json({ success: false, message: "Internal Server Error", error: error.message });
     }
