@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: [5, "Password must be at least 5 characters long"],
-        maxLength: [30, "Password must be at most 30 characters long"],
         select: false   // This will not show the password in the response
     },
 
@@ -52,7 +51,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ["job seeker", "employer"],
+        enum: ["job seeker", "employer"],   
     },
 
     createdAt: {

@@ -5,10 +5,12 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const DBConnection = require('./config/DBconnection');
 const { notFound, defaultErrorHandler } = require('./Middlewear/ErrorHandler/errorHandler');
+const cloudinaryConfig = require('./config/CloudinaryConfig');
+const fileUpload = require('express-fileupload');
 const app = express();
 const port = process.env.PORT;
 
-
+cloudinaryConfig();
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
@@ -19,6 +21,11 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/'
+}))
+
 
 app.get("/", (req, res) => {
     res.send("hello");
