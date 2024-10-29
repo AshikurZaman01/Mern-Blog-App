@@ -5,6 +5,7 @@ const loginUser = require('../../Controllers/UserControllers/loginUser');
 const userLogout = require('../../Controllers/UserControllers/userLogout');
 const isAuthenticated = require('../../Middlewear/Authentication/auth');
 const getuser = require('../../Controllers/UserControllers/getUser');
+const updateUserProfile = require('../../Controllers/UserControllers/updateUserProfile');
 const router = express.Router();
 
 router.post('/registerUser', uploadResume, registerUser);
@@ -14,5 +15,7 @@ router.post('/loginUser', loginUser);
 router.get('/logoutUser', isAuthenticated, userLogout);
 
 router.get('/getUser', isAuthenticated, getuser);
+
+router.put('/updateUserProfile', isAuthenticated, uploadResume, updateUserProfile);
 
 module.exports = router;
