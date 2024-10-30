@@ -28,9 +28,7 @@ app.use(fileUpload({
 }))
 
 
-app.get("/", (req, res) => {
-    res.send("hello");
-});
+
 
 // Routes
 app.use('/api/v1/user', require('./Routes/UserRoutes/userRoutes'));
