@@ -28,8 +28,6 @@ app.use(fileUpload({
 }))
 
 
-
-
 // Routes
 app.use('/api/v1/user', require('./Routes/UserRoutes/userRoutes'));
 app.use('/api/v1/job', require('./Routes/JobRoutes/jobRoute'));

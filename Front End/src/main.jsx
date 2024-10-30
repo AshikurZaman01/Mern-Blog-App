@@ -6,7 +6,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Roots from './Components/Roots/Roots';
-import Home from './Components/Home/Home';
+import Home from './Components/Pages/Home/Home';
+import store from './Store/store';
+import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,26 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-
+      {
+        path: "/jobs",
+        element: <h1>Jobs</h1>,
+      },
+      {
+        path: "/post/application/:id",
+        element: <h1>Application </h1>,
+      },
+      {
+        path: "/register",
+        element: <h1>Register</h1>,
+      },
+      {
+        path: "/login",
+        element: <h1>Login</h1>,
+      },
+      {
+        path: "/dashboard",
+        element: <h1>Dashboard</h1>
+      },
     ]
   },
 ]);
@@ -25,6 +46,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </React.StrictMode >
 )
