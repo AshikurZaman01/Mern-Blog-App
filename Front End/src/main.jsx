@@ -9,11 +9,13 @@ import Roots from './Components/Roots/Roots';
 import Home from './Components/Pages/Home/Home';
 import store from './Store/store';
 import { Provider } from 'react-redux';
+import NotFound from './Components/NotFound/NotFound';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Roots></Roots>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
