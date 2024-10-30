@@ -40,17 +40,15 @@ const TopNiches = () => {
 
     return (
         <section className="py-16 flex flex-col items-center gap-12 max-w-screen-2xl mx-auto bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded shadow-md">
-
-
             <h3 className="text-3xl font-bold text-yellow-400 uppercase tracking-wider">Top Niches</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-4">
                 {services.map((service) => (
                     <div
                         key={service.id}
-                        className="bg-gray-900 border border-gray-700 p-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl hover:border-yellow-400 hover:bg-yellow-400 hover:text-gray-900"
+                        className="group bg-gray-900 border border-gray-700 p-6 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105 hover:shadow-xl hover:border-yellow-400 hover:bg-yellow-400 hover:text-gray-900"
                     >
                         <h4 className="text-xl font-semibold uppercase tracking-wide mb-2">{service.service}</h4>
-                        <p className="text-gray-300">{service.description}</p>
+                        <p className="text-gray-300 group-hover:text-slate-900 transition-colors duration-300">{service.description}</p>
                     </div>
                 ))}
             </div>

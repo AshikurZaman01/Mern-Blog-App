@@ -6,9 +6,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[800px] flex flex-col justify-center items-center mx-auto gap-8 max-w-[1700px] px-4 bg-gradient-to-br from-gray-800 via-purple-900 to-blue-800 text-white py-16 shadow-xl relative overflow-hidden">
+    <section className="min-h-[800px] flex flex-col justify-center items-center mx-auto gap-8 max-w-[1700px] px-4 py-16 bg-gradient-to-br from-gray-800 via-purple-900 to-blue-800 text-white shadow-xl relative overflow-hidden rounded-md">
 
-      <h1 className="text-4xl md:text-5xl font-extrabold uppercase text-center tracking-wide leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-slate-500 to-blue-400">
+      <h1 className="text-4xl md:text-5xl font-extrabold uppercase text-center tracking-wide leading-tight bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-slate-500 to-blue-400">
         Find Your Dream Job Today
       </h1>
 
@@ -17,14 +17,8 @@ const Hero = () => {
       </h4>
 
       <div className="max-w-3xl text-center bg-gradient-to-br from-gray-800 via-purple-800 to-blue-900 text-gray-100 p-8 md:p-12 rounded-2xl font-medium transition duration-300 hover:shadow-2xl transform hover:-translate-y-2 hover:bg-opacity-80 shadow-lg shadow-purple-600/20 relative z-10 overflow-hidden">
-
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black opacity-20"></div>
-
         <p className="mb-4 relative z-20">
-          Explore a vast array of job listings in diverse industries. Whether
-          you're a seasoned professional or just starting out, find the perfect
-          role to advance your career. Our platform makes job searching easy and
-          efficient, bringing you closer to your next big opportunity.
+          Explore a vast array of job listings in diverse industries. Whether you're a seasoned professional or just starting out, find the perfect role to advance your career.
         </p>
 
         <div className="flex justify-center items-center gap-4 relative z-20">
@@ -32,7 +26,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Adjusted gradient div for better color matching effect */}
       <div className="absolute inset-x-0 bottom-0 h-1/3 -mb-2 bg-gradient-to-t from-blue-800 via-transparent to-transparent blur-sm z-0"></div>
     </section>
   );
