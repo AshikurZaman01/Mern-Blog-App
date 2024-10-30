@@ -7,6 +7,7 @@ const DBConnection = require('./config/DBconnection');
 const { notFound, defaultErrorHandler } = require('./Middlewear/ErrorHandler/errorHandler');
 const cloudinaryConfig = require('./config/CloudinaryConfig');
 const fileUpload = require('express-fileupload');
+const newsLetterCron = require('./Automation/newsLetterCron');
 const app = express();
 const port = process.env.PORT;
 
@@ -34,11 +35,14 @@ app.get("/", (req, res) => {
 // Routes
 app.use('/api/v1/user', require('./Routes/UserRoutes/userRoutes'));
 app.use('/api/v1/job', require('./Routes/JobRoutes/jobRoute'));
+app.use('/api/v1/application', require('./Routes/ApplicationRoutes/applicationRoutes'));
 
 // Error handling middlewares
 app.use(notFound);
 app.use(defaultErrorHandler);
 
+
+newsLetterCron();
 // Connecting to the database
 DBConnection().then(() => {
     app.listen(port, () => {

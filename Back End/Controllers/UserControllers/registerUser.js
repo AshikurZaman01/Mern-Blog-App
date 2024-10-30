@@ -11,8 +11,8 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
-        if (role === "job seeker" && (!firstNich || !secondNich || !thirdNich)) {
-            return res.status(400).json({ message: 'All fields are preferred for job seeker' });
+        if (role === "jobSeeker" && (!firstNich || !secondNich || !thirdNich)) {
+            return res.status(400).json({ message: 'All fields are preferred for jobSeeker' });
         }
 
         // Check if user already exists
