@@ -17,50 +17,63 @@ const FilteredCard = ({ setCityData, setNicheData }) => {
         "IT Project Management", "IT Support and Helpdesk", "Systems Administration", "IT Consulting"
     ];
 
-    const handleCityChange = useCallback((selectedCity) => {
+    const handleCityChange = useCallback((e) => {
+        const selectedCity = e.target.value;
         setCity(selectedCity);
         setCityData(selectedCity);
     }, [setCityData]);
 
-    const handleNicheChange = useCallback((selectedNiche) => {
+    const handleNicheChange = useCallback((e) => {
+        const selectedNiche = e.target.value;
         setNiche(selectedNiche);
         setNicheData(selectedNiche);
     }, [setNicheData]);
+
+    const handleReset = () => {
+        setCity("");
+        setNiche("");
+        setCityData("");
+        setNicheData("");
+    };
 
     return (
         <div className="w-full sm:w-1/4 flex flex-col gap-8 sm:gap-12">
             <div className="flex flex-col gap-2">
                 <h2 className="text-lg sm:text-xl font-medium border-b border-gray-300 pb-3 sm:pb-5">Filter Job By City</h2>
-                {cities.map((cityName, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                        <input
-                            type="radio"
-                            id={cityName}
-                            name="city"
-                            value={cityName}
-                            checked={city === cityName}
-                            onChange={() => handleCityChange(cityName)}
-                        />
-                        <label htmlFor={cityName}>{cityName}</label>
-                    </div>
-                ))}
+                <select
+                    value={city}
+                    onChange={handleCityChange}
+                    className="border border-gray-300 rounded-md py-2 px-3"
+                >
+                    <option value="">Select a city</option>
+                    {cities.map((cityName, index) => (
+                        <option key={index} value={cityName}>
+                            {cityName}
+                        </option>
+                    ))}
+                </select>
             </div>
             <div className="flex flex-col gap-2">
                 <h2 className="text-lg sm:text-xl font-medium border-b border-gray-300 pb-3 sm:pb-5">Filter Job By Niche</h2>
-                {nichesArray.map((nicheName, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                        <input
-                            type="radio"
-                            id={nicheName}
-                            name="niche"
-                            value={nicheName}
-                            checked={niche === nicheName}
-                            onChange={() => handleNicheChange(nicheName)}
-                        />
-                        <label htmlFor={nicheName}>{nicheName}</label>
-                    </div>
-                ))}
+                <select 
+                    value={niche}
+                    onChange={handleNicheChange}
+                    className="border border-gray-300 rounded-md py-2 px-3"
+                >
+                    <option value="" className="rounded-full">Select a niche</option>
+                    {nichesArray.map((nicheName, index) => (
+                        <option key={index} value={nicheName}>
+                            {nicheName}
+                        </option>
+                    ))}
+                </select>
             </div>
+            <button
+                onClick={handleReset}
+                className="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow transition-colors duration-200 hover:bg-red-600"
+            >
+                Reset Filters
+            </button>
         </div>
     );
 };
