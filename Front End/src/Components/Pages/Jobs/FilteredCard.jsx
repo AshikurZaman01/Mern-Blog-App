@@ -1,47 +1,31 @@
 import { useState } from "react";
 
-const FilteredCard = () => {
+const FilteredCard = ({ setCityData, setNicheData }) => {
     const [city, setCity] = useState("");
     const [niche, setNiche] = useState("");
 
-    console.log("city :", city, "niches", niche);
-
     const cities = [
-        "Dhaka",
-        "Chittagong",
-        "Khulna",
-        "Rajshahi",
-        "Sylhet",
-        "Barisal",
-        "Narayanganj",
-        "Gazipur",
-        "Mymensingh",
-        "Bogra",
-        "Jessore",
+        "Dhaka", "Chittagong", "Khulna", "Rajshahi", "Sylhet", "Barisal",
+        "Narayanganj", "Gazipur", "Mymensingh", "Bogra", "Jessore"
     ];
 
     const nichesArray = [
-        "Software Development",
-        "Web Development",
-        "Cybersecurity",
-        "Data Science",
-        "Artificial Intelligence",
-        "Cloud Computing",
-        "DevOps",
-        "Mobile App Development",
-        "Blockchain",
-        "Database Administration",
-        "Network Administration",
-        "UI/UX Design",
-        "Game Development",
-        "IoT (Internet of Things)",
-        "Big Data",
-        "Machine Learning",
-        "IT Project Management",
-        "IT Support and Helpdesk",
-        "Systems Administration",
-        "IT Consulting",
+        "Software Development", "Web Development", "Cybersecurity", "Data Science",
+        "Artificial Intelligence", "Cloud Computing", "DevOps", "Mobile App Development",
+        "Blockchain", "Database Administration", "Network Administration", "UI/UX Design",
+        "Game Development", "IoT (Internet of Things)", "Big Data", "Machine Learning",
+        "IT Project Management", "IT Support and Helpdesk", "Systems Administration", "IT Consulting"
     ];
+
+    const handleCityChange = (selectedCity) => {
+        setCity(selectedCity);
+        setCityData(selectedCity);  
+    };
+
+    const handleNicheChange = (selectedNiche) => {
+        setNiche(selectedNiche);
+        setNicheData(selectedNiche); 
+    };
 
     return (
         <div className="w-1/4 flex flex-col gap-12">
@@ -55,7 +39,7 @@ const FilteredCard = () => {
                             name="city"
                             value={cityName}
                             checked={city === cityName}
-                            onChange={() => setCity(cityName)}
+                            onChange={() => handleCityChange(cityName)}
                         />
                         <label htmlFor={cityName}>{cityName}</label>
                     </div>
@@ -71,7 +55,7 @@ const FilteredCard = () => {
                             name="niche"
                             value={nicheName}
                             checked={niche === nicheName}
-                            onChange={() => setNiche(nicheName)}
+                            onChange={() => handleNicheChange(nicheName)}
                         />
                         <label htmlFor={nicheName}>{nicheName}</label>
                     </div>
