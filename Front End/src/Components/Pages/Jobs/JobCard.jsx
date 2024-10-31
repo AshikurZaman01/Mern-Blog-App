@@ -1,34 +1,54 @@
 import { Link } from "react-router-dom";
+import { MdOutlineLocationOn } from "react-icons/md";
+import { AiOutlineFieldTime, AiOutlineDollarCircle } from "react-icons/ai";
 
-const JobCard = () => {
-  return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 p-4">
-      <div className="bg-gray-200 rounded-lg p-4 transition-all hover:bg-gray-300">
-        <p className="text-xs sm:text-sm text-green-600 bg-green-200 rounded-md inline-block px-2">
-          Hiring Multiple Candidates
-        </p>
-        <p className="text-lg sm:text-xl font-semibold text-gray-800 mt-2">
-          Job Title
-        </p>
-        <p className="text-sm sm:text-base text-gray-600">Company Name</p>
-        <p className="text-sm sm:text-base text-gray-600">Location</p>
-        <p className="text-sm sm:text-base text-gray-600">
-          <span className="font-semibold">Salary:</span> Rs. 0
-        </p>
-        <p className="text-sm sm:text-base text-gray-600">
-          <span className="font-semibold">Posted On:</span> N/A
-        </p>
-        <div className="flex justify-end mt-3">
-          <Link
-            className="bg-blue-500 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base hover:bg-blue-600 transition-all"
-            to="/post/application/1"
-          >
-            Apply Now
-          </Link>
+const JobCard = ({ job }) => {
+    const { title, companyName, hiringMultipleCandidates, jobPosedDate, jobType, location, salary } = job || {};
+
+    return (
+        <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-xl">
+            <div className="flex justify-between items-center mb-4">
+                <p className="text-xs sm:text-sm text-green-600 bg-green-200 rounded-md inline-block px-2 py-1">
+                    {hiringMultipleCandidates === "yes" ? 'Hiring Multiple Candidates' : 'Single Position'}
+                </p>
+            </div>
+            <h2 className="text-xl font-semibold text-gray-800 mt-2 capitalize">{title}</h2>
+            <p className="text-sm text-gray-600 capitalize mb-2 ">{companyName}</p>
+
+            <div className="flex items-center text-sm text-gray-600 mb-3 capitalize">
+                <MdOutlineLocationOn className="mr-1 text-gray-500" />
+                <span>{location}</span>
+            </div>
+            <div className="flex items-center text-sm text-gray-600 mb-3 capitalize">
+                <AiOutlineFieldTime className="mr-1 text-gray-500" />
+                <span>{jobType}</span>
+            </div>
+            <div className="flex items-center text-sm text-gray-600 mb-3">
+                <AiOutlineDollarCircle className="mr-1 text-gray-500" />
+                <span className="font-semibold">
+                    Salary:
+                    <span className="bg-yellow-200 text-yellow-800 px-2 py-1 rounded ml-1 inline-block">
+                        Rs. {salary}
+                    </span>
+                </span>
+            </div>
+
+            <div className="text-xs mt-3">
+                <p className="text-blue-600">
+                    <span className="font-semibold">Posted on:</span> {jobPosedDate && jobPosedDate.slice(0, 10)}
+                </p>
+            </div>
+
+            <div className="flex justify-end mt-4">
+                <Link
+                    className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow transition-colors duration-200 hover:bg-blue-700 transform hover:-translate-y-1"
+                    to={`/post/application/${job._id}`}
+                >
+                    Apply Now
+                </Link>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default JobCard;
