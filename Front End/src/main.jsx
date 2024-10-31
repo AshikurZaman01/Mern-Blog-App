@@ -7,9 +7,11 @@ import {
 } from "react-router-dom";
 import Roots from './Components/Roots/Roots';
 import Home from './Components/Pages/Home/Home';
-import store from './Store/store';
 import { Provider } from 'react-redux';
 import NotFound from './Components/NotFound/NotFound';
+import store from './Redux/Store/store';
+import { Toaster } from 'react-hot-toast';
+import Jobs from './Components/Pages/Jobs/Jobs';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/jobs",
-        element: <h1>Jobs</h1>,
+        element: <Jobs></Jobs>,
       },
       {
         path: "/post/application/:id",
@@ -50,6 +52,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router}></RouterProvider>
+      <Toaster />
     </Provider>
   </React.StrictMode >
 )

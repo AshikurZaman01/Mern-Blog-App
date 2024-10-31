@@ -1,8 +1,12 @@
-import Button from "../../Utils/Button/Button";
+import { useNavigate } from "react-router-dom";
+import Button from "../../../Utils/Button/Button";
 
 const Hero = () => {
+
+  const navigate = useNavigate();
+
   const handleBtn = () => {
-    console.log("Button Clicked");
+    navigate("/jobs");
   };
 
   return (
