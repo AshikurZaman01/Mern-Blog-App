@@ -55,7 +55,7 @@ const FilteredCard = ({ setCityData, setNicheData }) => {
             </div>
             <div className="flex flex-col gap-2">
                 <h2 className="text-lg sm:text-xl font-medium border-b border-gray-300 pb-3 sm:pb-5">Filter Job By Niche</h2>
-                <select 
+                <select
                     value={niche}
                     onChange={handleNicheChange}
                     className="border border-gray-300 rounded-md py-2 px-3"

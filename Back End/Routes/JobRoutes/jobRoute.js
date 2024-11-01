@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post('/createJob', isAuthenticated, isAuthorized("employer"), createJob);
 
-router.get('/getAllJobs',  getAllJobs);
+router.get('/getAllJobs', isAuthenticated, isAuthorized("jobseeker"), getAllJobs);
 
 router.get('/getMyJob', isAuthenticated, isAuthorized("employer"), getMyJob);
 

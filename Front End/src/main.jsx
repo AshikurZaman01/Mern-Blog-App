@@ -12,6 +12,8 @@ import NotFound from './Components/NotFound/NotFound';
 import store from './Redux/Store/store';
 import { Toaster } from 'react-hot-toast';
 import Jobs from './Components/Pages/Jobs/Jobs';
+import Register from './Components/Pages/Register/Register';
+import Login from './Components/Pages/Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -31,28 +33,27 @@ const router = createBrowserRouter([
         path: "/post/application/:id",
         element: <h1>Application </h1>,
       },
-      {
-        path: "/register",
-        element: <h1>Register</h1>,
-      },
-      {
-        path: "/login",
-        element: <h1>Login</h1>,
-      },
+
       {
         path: "/dashboard",
         element: <h1>Dashboard</h1>
       },
     ]
   },
+  {
+    path: "/register",
+    element: <Register></Register>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
+  },
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}></RouterProvider>
-      <Toaster />
-    </Provider>
-  </React.StrictMode >
+  <Provider store={store}>
+    <RouterProvider router={router}></RouterProvider>
+    <Toaster />
+  </Provider>
 )

@@ -7,11 +7,13 @@ const JobCard = ({ job }) => {
 
     return (
         <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-xl">
+
             <div className="flex justify-between items-center mb-4">
-                <p className="text-xs sm:text-sm text-green-600 bg-green-200 rounded-md inline-block px-2 py-1">
-                    {hiringMultipleCandidates === "yes" ? 'Hiring Multiple Candidates' : 'Single Position'}
+                <p className={`text-xs sm:text-sm rounded-md inline-block px-2 py-1 ${hiringMultipleCandidates === "yes" ? 'bg-green-200 text-green-600' : 'bg-red-200 text-red-600'}`}>
+                    {hiringMultipleCandidates === "yes" ? 'Hiring Multiple Candidates' : 'Hiring'}
                 </p>
             </div>
+
             <h2 className="text-xl font-semibold text-gray-800 mt-2 capitalize">{title}</h2>
             <p className="text-sm text-gray-600 capitalize mb-2 ">{companyName}</p>
 
@@ -19,7 +21,7 @@ const JobCard = ({ job }) => {
                 <MdOutlineLocationOn className="mr-1 text-gray-500" />
                 <span>{location}</span>
             </div>
-            <div className="flex items-center text-sm text-gray-600 mb-3 capitalize">
+            <div className="flex items-center text-sm text-gray-600 mb-3 capitalize font-bold">
                 <AiOutlineFieldTime className="mr-1 text-gray-500" />
                 <span>{jobType}</span>
             </div>
